@@ -7,23 +7,14 @@ const methodOverride = require('method-override')
 
 // const Todo = require('./models/todo')
 
-// express server settings
 const routes = require('./routes')
+// mongodb connection settings
+require('./config/mongoose')
+
+// express server settings
 const app = express()
 const port = 3000
 
-// mongodb connection settings
-mongoose.connect('mongodb://localhost/todoList', { useNewUrlParser: true, useUnifiedTopology: true })
-// .connect('mongodb://<user>:<password>@<IP addr>:<port>/<dbName>)
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
 
 // 建立及啟用模板引擎
 app.engine('hbs', exphbs({ defaultLayouts: 'main', extname: '.hbs' }))

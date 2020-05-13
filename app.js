@@ -2,6 +2,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+
 const Todo = require('./models/todo')
 
 // express server settings
@@ -25,11 +27,25 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayouts: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// make every request go through body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.get('/', (req, res) => {
   Todo.find()
     .lean()  //將撈出的資料轉換成單純的JS物件
     .then(todos => res.render('index', { todos }))
     .catch(error => console.error(error))
+})
+
+app.get('/todos/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/todos', (req, res) => {
+  const name = req.body.name
+  return Todo.create({ name })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {

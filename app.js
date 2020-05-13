@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
   Todo.find()
     .lean()  //將撈出的資料轉換成單純的JS物件
+    .sort({ _id: 'asc' })  //desc
     .then(todos => res.render('index', { todos }))
     .catch(error => console.error(error))
 })

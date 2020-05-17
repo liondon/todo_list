@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/todoList', { useNewUrlParser: true, useUnifiedTopology: true })
+const mongodbURI = process.env.MONGODB_URI || 'mongodb://localhost/todoList'
+
+mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 // .connect('mongodb://<user>:<password>@<IP addr>:<port>/<dbName>)
 
 const db = mongoose.connection

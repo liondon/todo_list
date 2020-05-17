@@ -13,7 +13,7 @@ require('./config/mongoose')
 
 // express server settings
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 
 // 建立及啟用模板引擎

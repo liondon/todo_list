@@ -17,8 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 - MongoDB (and a database named ```todoList```)
 
 ### Installing
-1. clone the project to your local machine:  
-    ```git clone https://github.com/liondon/todo_list```  
+1. clone the project to your local machine:```git clone https://github.com/liondon/todo_list```  
    (or simply download its .zip file and extract it)  
 2. go into the project folder: ```cd todo_list```
 3. run ```npm install``` under the project folder to install necessary packages for the app

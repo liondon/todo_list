@@ -1,32 +1,34 @@
 // Initialize express/mongodb server
+
+// include packages
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-
 // const Todo = require('./models/todo')
-
 const routes = require('./routes')
-// mongodb connection settings
+
+// mongodb connection setup
 require('./config/mongoose')
 
-// express server settings
+// express server setup
 const app = express()
 const port = process.env.PORT || 3000
+const ip = process.env.IP || 'localhost'
 
-
-// 建立及啟用模板引擎
+// template engine setup
 app.engine('hbs', exphbs({ defaultLayouts: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 // make every request go through body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// allow HTTP verb (e.g.PUT, DELETE) in places where it's not supported
 app.use(methodOverride('_method'))
 
 app.use(routes)
 
 app.listen(port, () => {
-  console.log(`Express server is running on http://localhost:${port}`)
+  console.log(`Express server is running on http://${ip}:${port}`)
 })

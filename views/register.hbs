@@ -2,14 +2,16 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mt-3">Register</h1>
-      <form action="users/login" method="POST">
+      <form action="/users/register" method="POST">
         <div class="form-group">
           <label for="userName">User Name</label>
-          <input class="form-control" type="userName" id="userName" name="userName" placeholder="Enter User Name">
+          <input class="form-control" type="userName" id="userName" name="userName" placeholder="Enter User Name"
+            value="{{ userName }}">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input class="form-control" type="email" id="email" name="email" placeholder="Enter Email">
+          <input class="form-control" type="email" id="email" name="email" placeholder="Enter Email"
+            value="{{ email }}">
         </div>
         <!-- 也可改寫如下:
           <label>Email
@@ -18,12 +20,13 @@
         -->
         <div class="form-group">
           <label for="password">Password</label>
-          <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password">
+          <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password"
+            value="{{ password }}">
         </div>
         <div class="form-group">
           <label for="confirmPassword">Confirm Password</label>
-          <input class="form-control" type="confirmPassword" name="confirmPassword" id="confirmPassword"
-            placeholder="Confirm Password">
+          <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+            placeholder="Confirm Password" value="{{ confirmPassword }}">
         </div>
         <button type="submit" class="btn btn-primary btn-block mt-4">Register</button>
       </form>

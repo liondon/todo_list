@@ -1,1 +1,26 @@
-<h2>Login</h2>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mt-3">Login</h1>
+      <form action="users/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" type="email" id="email" name="email" placeholder="Enter Email">
+        </div>
+        <!-- 也可改寫如下:
+          <label>Email
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+          </label>
+        -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+      <p class="lead mt-4">
+        No Account Yet? <a href="/users/register">Register Now!</a>
+      </p>
+    </div>
+  </div>
+</div>

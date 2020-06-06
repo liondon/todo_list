@@ -3,6 +3,7 @@
 // include packages
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -33,6 +34,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // allow HTTP verb (e.g.PUT, DELETE) in places where it's not supported
 app.use(methodOverride('_method'))
+
+usePassport(app)
 
 app.use(routes)
 

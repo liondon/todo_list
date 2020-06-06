@@ -2,6 +2,7 @@
 
 // include packages
 const express = require('express')
+const session = require('express-session')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -20,6 +21,12 @@ const ip = process.env.IP || 'localhost'
 // template engine setup
 app.engine('hbs', exphbs({ defaultLayouts: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+
+app.use(session({
+  secret: "Miumiu is cute!",
+  resave: false,
+  saveUninitialized: true
+}))
 
 // make every request go through body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
